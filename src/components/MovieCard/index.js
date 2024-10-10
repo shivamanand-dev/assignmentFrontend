@@ -2,8 +2,6 @@ import React from "react";
 import StyledMovieCard from "./StyledMovieCard";
 
 function MovieCard({ data, index }) {
-  console.log(data);
-
   function formatDate(timestamp) {
     const date = new Date(timestamp * 1000);
     const day = date.getDate().toString().padStart(2, "0");
@@ -30,8 +28,8 @@ function MovieCard({ data, index }) {
           <p>Language: {data?.language}</p>
           <p>
             Director:{" "}
-            {data?.director?.map((e) => (
-              <span>{e}</span>
+            {data?.director?.map((e, i) => (
+              <span key={i}>{e}</span>
             ))}
           </p>
           <p>Release Date: {formatDate(data?.releasedDate)}</p>

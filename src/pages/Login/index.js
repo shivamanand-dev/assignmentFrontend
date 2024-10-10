@@ -1,8 +1,11 @@
 import React from "react";
 import StyledLogin from "./StyledLogin";
 import { useState } from "react";
+import fetchWrapper from "../../utils/fetchWrapper";
+import { useNavigate } from "react-router-dom";
 
 function Login({ isSignUp = false }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,8 +35,34 @@ function Login({ isSignUp = false }) {
     }
   };
 
-  const onClickSubmit = () => {
-    console.log(formData);
+  const onClickSubmit = async () => {
+    if (isSignUp) {
+      const res = await fetchWrapper.post(
+        `${process.env.REACT_APP_BACKEND_URI}/auth/register`,
+        formData
+      );
+      alert(res.message);
+
+      localStorage.setItem("user", JSON.stringify(res.user));
+      localStorage.setItem("authToken", JSON.stringify(res.authToken));
+
+      if (res.success) {
+        navigate("/");
+      }
+    } else {
+      const res = await fetchWrapper.post(
+        `${process.env.REACT_APP_BACKEND_URI}/auth/login`,
+        formData
+      );
+      alert(res.message);
+
+      localStorage.setItem("user", JSON.stringify(res.userDetails));
+      localStorage.setItem("authToken", JSON.stringify(res.authToken));
+
+      if (res.success) {
+        navigate("/");
+      }
+    }
   };
 
   return (
