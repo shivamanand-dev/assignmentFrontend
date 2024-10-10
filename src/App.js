@@ -4,11 +4,14 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Navbar from "./components/Navbar";
+import "./App.css";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
