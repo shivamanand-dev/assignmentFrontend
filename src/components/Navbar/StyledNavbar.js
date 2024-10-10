@@ -18,7 +18,7 @@ const StyledNavbar = styled.section`
     font-size: 25px;
     text-decoration: none;
     font-weight: 600;
-    cursor: default;
+    cursor: pointer;
   }
 
   .navbar a {
@@ -27,6 +27,7 @@ const StyledNavbar = styled.section`
     text-decoration: none;
     margin-left: 45px;
     transition: 0.3s;
+    cursor: pointer;
   }
 
   .navbar a:hover {

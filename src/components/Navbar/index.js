@@ -1,10 +1,23 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from "react";
 import StyledNavbar from "./StyledNavbar";
 import Hamburger from "hamburger-react";
 import { theme } from "../../theme/theme";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
+  const user = localStorage.getItem("user");
+
+  const onClickLogout = () => {
+    localStorage.clear();
+    navigate("/signup");
+  };
+
+  const navigateTo = (path) => {
+    navigate(path);
+  };
   return (
     <StyledNavbar>
       <header className="header wrapper">
@@ -22,15 +35,35 @@ function Navbar() {
         </div>
 
         <nav className="navbar">
-          <a href="/login">Login</a>
-          <a href="/signup">Signup</a>
+          {!user ? (
+            <>
+              <a onClick={() => navigateTo("/login")}>Login</a>
+              <a onClick={() => navigateTo("/signup")}>Signup</a>
+            </>
+          ) : (
+            <>
+              <a onClick={() => navigateTo("/profile")}>Profile</a>
+              <a onClick={onClickLogout} onKeyDown={onClickLogout}>
+                Logout
+              </a>
+            </>
+          )}
         </nav>
       </header>
 
       {isOpen && (
         <nav className="mob-navbar">
-          <a href="/login">Login</a>
-          <a href="/signup">Signup</a>
+          {!user ? (
+            <>
+              <a onClick={() => navigateTo("/login")}>Login</a>
+              <a onClick={() => navigateTo("/signup")}>Signup</a>
+            </>
+          ) : (
+            <>
+              <a onClick={() => navigateTo("/profile")}>Profile</a>
+              <a onClick={onClickLogout}>Logout</a>
+            </>
+          )}
         </nav>
       )}
     </StyledNavbar>
