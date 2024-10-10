@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Profile from "./pages/Profile";
+import AllUser from "./pages/AllUser";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/users" element={<AllUser />} />
         </Routes>
       </Router>
     </ThemeProvider>

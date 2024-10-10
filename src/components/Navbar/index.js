@@ -43,6 +43,7 @@ function Navbar() {
           ) : (
             <>
               <a onClick={() => navigateTo("/profile")}>Profile</a>
+              <a onClick={() => navigateTo("/users")}>Registered User</a>
               <a onClick={onClickLogout} onKeyDown={onClickLogout}>
                 Logout
               </a>
