@@ -48,6 +48,10 @@ const StyledLogin = styled.section`
       transition: all 0.3s ease;
     }
     button:hover {
+      background-color: ${theme.colors.secondary};
+      color: ${theme.colors.background};
+    }
+    button:disabled {
       background-color: ${theme.colors.accent};
       color: ${theme.colors.text};
     }
