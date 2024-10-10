@@ -21,7 +21,7 @@ function Navbar() {
   return (
     <StyledNavbar>
       <header className="header wrapper">
-        <a href="/" className="logo">
+        <a onClick={() => navigateTo("/")} className="logo">
           Logo
         </a>
 
