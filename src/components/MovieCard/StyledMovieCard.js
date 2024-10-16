@@ -11,7 +11,8 @@ const StyledMovieCard = styled.section`
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    width: 600px;
+    /* width: 100%; */
+    max-width: 600px;
     cursor: pointer;
   }
 
@@ -71,9 +72,18 @@ const StyledMovieCard = styled.section`
     color: red;
   }
 
-  .actions span {
-    margin-left: 5px;
+  
+@media screen and (max-width: 768px) {
+  .rank{
+    display: none;
   }
+  .actions{
+    flex-direction: column;
+  }
+  .details{
+    margin-left: 10px;
+  }
+}
 `;
 
 export default StyledMovieCard;
